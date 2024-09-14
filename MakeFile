@@ -1,0 +1,31 @@
+CXX = g++
+CXXFLAGS = -Wall -g -std=c++17  # Add optimization flags like -O2 or -O3 if needed
+INCLUDES = -Icore               # Include core directory for header files
+
+# The file path to the source file (passed as a command-line argument)
+FILE ?= 
+# Object file output
+OBJ = $(FILE:.cpp=.o)
+
+# The compiled output binary
+OUTPUT = output
+
+# Default target, requires a path to the main source file
+all: $(OUTPUT)
+
+# Rule to compile the main source file and link with core dependencies
+$(OUTPUT): $(OBJ) $(CORE_OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
+
+# Rule to compile the source file provided via $(FILE)
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(OUTPUT)
+
+# Print out usage if no file is provided
+help:
+	@echo "Usage: make FILE=<path_to_your_cpp_file>"
+
+
