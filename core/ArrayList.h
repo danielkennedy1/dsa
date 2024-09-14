@@ -16,6 +16,7 @@ public:
 
   T *array;
 
+private:
   void resize(int newSize);
 };
 

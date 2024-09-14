@@ -3,8 +3,6 @@
 
 #include "ListNode.h"
 
-// TODO: this has literally no error handling
-
 template <typename T> class LinkedList {
 public:
   LinkedList(){};
