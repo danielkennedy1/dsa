@@ -1,4 +1,5 @@
 #include "ArrayList.h"
+#include <iostream>
 
 template <typename T> void ArrayList<T>::append(T element) {
   if (length == size)
@@ -9,9 +10,17 @@ template <typename T> void ArrayList<T>::append(T element) {
 
 template <typename T> void ArrayList<T>::insert(T element, int index) {
   if (length == size)
-    resize(length << 1);
-  if (index >= length || index < 0)
+    resize(size << 1);
+
+  if (index == length) {
+    append(element);
     return;
+  }
+
+  if (index > length || index < 0) {
+    std::cout << "invalid insertion to arraylist of size " << size << " length " << length << " at index " << index << std::endl;
+    return;
+  }
 
   for (int i = index + 1; i < length; i++) {
     array[i] = array[i - 1];
