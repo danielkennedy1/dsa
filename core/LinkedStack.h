@@ -1,7 +1,10 @@
+#ifndef LINKEDSTACK_H
+#define LINKEDSTACK_H
+
 #include "ListNode.h"
 
 template<typename T>
-class Stack {
+class LinkedStack {
 public:
     T peek() {
         if (head == nullptr) {
@@ -26,3 +29,5 @@ public:
     }
     ListNode<T>* head = nullptr;
 };
+
+#endif

@@ -1,31 +1,27 @@
 CXX = g++
-CXXFLAGS = -Wall -g -std=c++17  # Add optimization flags like -O2 or -O3 if needed
-INCLUDES = -Icore               # Include core directory for header files
+CXXFLAGS = -Wall -std=c++17 -g
 
-# The file path to the source file (passed as a command-line argument)
-FILE ?= 
-# Object file output
-OBJ = $(FILE:.cpp=.o)
+# CLI input location of the file (with main()) to be compiled
+FILE ?=
+MAIN_OBJECT = $(FILE:.cpp=.o)
 
-# The compiled output binary
-OUTPUT = output
+# Final executable name
+OUTPUT = output 
 
-# Default target, requires a path to the main source file
-all: $(OUTPUT)
+# For everything under core/, compile each .cpp file into a .o file
+CORE_DIR = core
+CORE_SOURCES = $(wildcard $(CORE_DIR)/*.cpp)
+CORE_OBJECTS = $(CORE_SOURCES:$(CORE_DIR)/%.cpp=$(CORE_DIR)/%.o)
 
-# Rule to compile the main source file and link with core dependencies
-$(OUTPUT): $(OBJ) $(CORE_OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
+CORE: $(CORE_OBJECTS)
 
-# Rule to compile the source file provided via $(FILE)
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+all: $(CORE)
+
+$(CORE_DIR)/%.o: $(CORE_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(OUTPUT)
+	del $(CORE_DIR)\*.o
 
-# Print out usage if no file is provided
-help:
-	@echo "Usage: make FILE=<path_to_your_cpp_file>"
-
-
+TEST: W1\linkedlist.cpp core\linkedlist.cpp
+	$(CXX) $(CXXFLAGS) W1\linkedlist.cpp core\linkedlist.cpp -o $(OUTPUT) -Icore

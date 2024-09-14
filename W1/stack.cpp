@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Stack.h"
+#include "LinkedStack.h"
 
 int main() {
-    Stack<float> stack = Stack<float>();
+    LinkedStack<float> stack = LinkedStack<float>();
     stack.push(1.0f);
     stack.push(2.0f);
     stack.push(3.0f);
