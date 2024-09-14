@@ -4,7 +4,8 @@
 template <typename T> struct ListNode {
   T val;
   ListNode *next;
-  ListNode(T x) : val(x), next(nullptr){};
+  ListNode *prev;
+  ListNode(T x) : val(x), next(nullptr), prev(nullptr) {};
   ~ListNode<T>() {};
 };
 
