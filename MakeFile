@@ -1,27 +1,13 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -g
 
+INCLUDES = -Icore
+
 # CLI input location of the file (with main()) to be compiled
 FILE ?=
-MAIN_OBJECT = $(FILE:.cpp=.o)
 
 # Final executable name
-OUTPUT = output 
+OUTPUT = output.exe 
 
-# For everything under core/, compile each .cpp file into a .o file
-CORE_DIR = core
-CORE_SOURCES = $(wildcard $(CORE_DIR)/*.cpp)
-CORE_OBJECTS = $(CORE_SOURCES:$(CORE_DIR)/%.cpp=$(CORE_DIR)/%.o)
-
-CORE: $(CORE_OBJECTS)
-
-all: $(CORE)
-
-$(CORE_DIR)/%.o: $(CORE_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-clean:
-	del $(CORE_DIR)\*.o
-
-TEST: W1\linkedlist.cpp core\linkedlist.cpp
-	$(CXX) $(CXXFLAGS) W1\linkedlist.cpp core\linkedlist.cpp -o $(OUTPUT) -Icore
+all:
+	g++ -o $(OUTPUT) $(FILE) $(INCLUDES)
