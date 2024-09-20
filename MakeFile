@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -g
 
-INCLUDES = -Isrc/W1
+INCLUDES = -Isrc/W1 -Isrc/W2
 
 # CLI input location of the file (with main()) to be compiled
 FILE ?=
