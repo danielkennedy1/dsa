@@ -10,6 +10,7 @@ template <typename T> struct BinaryNode {
   BinaryNode *right;
   BinaryNode(T x, BinaryNode<T>** edgeIn) : val(x), edgeIn(edgeIn), left(nullptr), right(nullptr) {};
   ~BinaryNode<T>() {
+    *this->edgeIn = nullptr;
     if (left != nullptr) delete left;
     if (right != nullptr) delete right;
   };

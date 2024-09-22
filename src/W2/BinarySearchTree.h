@@ -8,6 +8,9 @@ template<typename T> class BinarySearchTree {
 public:
   BinaryNode<T>* root;
   BinarySearchTree<T> () : root(nullptr) {};
+  ~BinarySearchTree<T> () {
+    delete root;
+  };
   void insert(T val);
   bool lookup(T val);
   T findMin();
@@ -15,6 +18,7 @@ public:
   T findMax();
   BinaryNode<T>* findMaxNode(BinaryNode<T>* node);
   void remove(T val);
+  void removeNode(BinaryNode<T>* node);
 
 private:
   void insert_rec(T val, BinaryNode<T>*& node);

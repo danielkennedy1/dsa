@@ -43,13 +43,31 @@ template <typename T> BinaryNode<T>* BinarySearchTree<T>::findMaxNode(BinaryNode
 }
 
 template <typename T> void BinarySearchTree<T>::remove(T val) {
-  BinaryNode<T>* node = locate(val);
+  removeNode(locate(val));
+}
 
+template <typename T> void BinarySearchTree<T>::removeNode(BinaryNode<T>* node) {
+  if (node == nullptr) return;
   if (node->left == nullptr && node->right == nullptr) {
-    *node->edgeIn = nullptr;
     delete node;
+    return;
   }
 
+  if (node->left != nullptr && node->right == nullptr) {
+    node->val = node->left->val;
+    removeNode(node->left);
+    return;
+  }
+
+  if (node->left == nullptr && node->right != nullptr) {
+    node->val = node->right->val;
+    removeNode(node->right);
+    return;
+  }
+
+  BinaryNode<T>* M = findMinNode(node->right);
+  node->val = M->val;
+  removeNode(M);
 }
 
 template <typename T> BinaryNode<T>* BinarySearchTree<T>::locate(T val) {
