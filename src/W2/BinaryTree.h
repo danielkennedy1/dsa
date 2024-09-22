@@ -5,8 +5,8 @@
 
 template <typename T> class BinaryTree {
 public:
-  BinaryNode<T>* root = nullptr;
-  BinaryTree<T> () {};
+  BinaryNode<T>* root;
+  BinaryTree<T> () : root(nullptr) {};
 };
 
 #endif
