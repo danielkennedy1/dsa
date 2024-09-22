@@ -20,5 +20,13 @@ int main() {
   std::cout << "lookup assertion" << std::endl;
   assert(tree->lookup(10));
 
+  std::cout << "findMin & findMax" << std::endl;
+  assert(tree->findMin() == 2);
+  assert(tree->findMax() == 10);
+
+  std::cout << "Remove" << std::endl;
+  tree->remove(2);
+  assert(!tree->lookup(2));
+
   return 0;
 }

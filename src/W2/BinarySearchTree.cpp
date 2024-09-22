@@ -8,7 +8,7 @@ template <typename T> void BinarySearchTree<T>::insert(T val) {
 // reference to a pointer, btw
 template <typename T> void BinarySearchTree<T>::insert_rec(T val, BinaryNode<T>*& node) { 
   if (node == nullptr) {
-    node = new BinaryNode<T>(val);
+    node = new BinaryNode<T>(val, &node);
     return;
   }
   if (node->val == val) return;
@@ -17,11 +17,51 @@ template <typename T> void BinarySearchTree<T>::insert_rec(T val, BinaryNode<T>*
 }
 
 template <typename T> bool BinarySearchTree<T>::lookup(T val) {
+  return locate(val) != nullptr;
+}
+
+template <typename T> T BinarySearchTree<T>::findMin() {
+  BinaryNode<T>* node = findMinNode(root);
+  if (node == nullptr) return -1;
+  return node->val;
+}
+
+template <typename T> BinaryNode<T>* BinarySearchTree<T>::findMinNode(BinaryNode<T>* node) {
+  while(node != nullptr && node->left != nullptr) node = node->left;
+  return node;
+}
+
+template <typename T> T BinarySearchTree<T>::findMax() {
+  BinaryNode<T>* node = findMaxNode(root);
+  if (node == nullptr) return -1;
+  return node->val;
+}
+
+template <typename T> BinaryNode<T>* BinarySearchTree<T>::findMaxNode(BinaryNode<T>* node) {
+  while(node != nullptr && node->right != nullptr) node = node->right;
+  return node;
+}
+
+template <typename T> void BinarySearchTree<T>::remove(T val) {
+  BinaryNode<T>* node = locate(val);
+
+  if (node->left == nullptr && node->right == nullptr) {
+    *node->edgeIn = nullptr;
+    delete node;
+  }
+
+}
+
+template <typename T> BinaryNode<T>* BinarySearchTree<T>::locate(T val) {
   BinaryNode<T>* node = root;
   while (node != nullptr) {
-    if (node->val == val) return true;
-    if (node->val > val) node = node->left;
-    else node = node->right;
+    if (node->val == val) return node;
+    if (node->val > val) { 
+      node = node->left;
+    }
+    else {
+      node = node->right;
+    }
   }
-  return false;
+  return nullptr;
 }
