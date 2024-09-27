@@ -5,15 +5,30 @@
 
 template <typename T> struct BinaryNode {
   T val;
-  BinaryNode<T>** edgeIn;
+  BinaryNode** edgeIn;
   BinaryNode *left;
   BinaryNode *right;
-  BinaryNode(T x, BinaryNode<T>** edgeIn) : val(x), edgeIn(edgeIn), left(nullptr), right(nullptr) {};
-  ~BinaryNode<T>() {
+  BinaryNode(T val, BinaryNode** edgeIn) : val(val), edgeIn(edgeIn), left(nullptr), right(nullptr) {};
+  ~BinaryNode() {
     *this->edgeIn = nullptr;
     if (left != nullptr) delete left;
     if (right != nullptr) delete right;
   };
+};
+
+template <typename T> struct AVLNode {
+  T val;
+  int balanceFactor;
+  AVLNode** edgeIn;
+  AVLNode* left;
+  AVLNode* right;
+
+  AVLNode(T val, AVLNode** edgeIn) : val(val), edgeIn(edgeIn), left(nullptr), right(nullptr), balanceFactor(0) {};
+  ~AVLNode() {
+    *this->edgeIn = nullptr;
+    if (left != nullptr) delete left;
+    if (right != nullptr) delete right;
+  }
 };
 
 #endif

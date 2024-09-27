@@ -6,7 +6,7 @@ template <typename T> struct ListNode {
   ListNode *next;
   ListNode *prev;
   ListNode(T x) : val(x), next(nullptr), prev(nullptr) {};
-  ~ListNode<T>() {};
+  ~ListNode() {};
 };
 
 #endif
