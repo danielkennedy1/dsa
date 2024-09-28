@@ -18,14 +18,12 @@ template <typename T> struct BinaryNode {
 
 template <typename T> struct AVLNode {
   T val;
-  int balanceFactor;
-  AVLNode** edgeIn;
+  int height;
   AVLNode* left;
   AVLNode* right;
 
-  AVLNode(T val, AVLNode** edgeIn) : val(val), edgeIn(edgeIn), left(nullptr), right(nullptr), balanceFactor(0) {};
+  AVLNode(T val) : val(val), left(nullptr), right(nullptr), height(1) {};
   ~AVLNode() {
-    *this->edgeIn = nullptr;
     if (left != nullptr) delete left;
     if (right != nullptr) delete right;
   }
