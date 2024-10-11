@@ -17,9 +17,8 @@ template <typename T> void ArrayList<T>::insert(T element, int index) {
     return;
   }
 
-  if (index > length || index < 0) {
-    std::cout << "invalid insertion to arraylist of size " << size << " length " << length << " at index " << index << std::endl;
-    return;
+  if (index > size || index < 0) {
+    while (size <= index) resize(size << 1);
   }
 
   for (int i = index + 1; i < length; i++) {
@@ -34,7 +33,7 @@ template <typename T> void ArrayList<T>::insert(T element, int index) {
 template <typename T> T ArrayList<T>::get(int index) { return array[index]; }
 
 template <typename T> void ArrayList<T>::resize(int newSize) {
-  T *newArray = new T[newSize];
+  T *newArray = new T[newSize](); // () 0s the elements
 
   for (int i = 0; i < size; i++) {
     newArray[i] = array[i];
