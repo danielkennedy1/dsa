@@ -1,8 +1,8 @@
-#include "HashTable.h"
+#include "SimpleHashTable.h"
 #include <iostream>
 
 int main() {
-  HashTable<int>* hashTable = new HashTable<int>();
+  SimpleHashTable<int>* hashTable = new SimpleHashTable<int>();
   hashTable->insert(1);
   hashTable->insert(2);
   hashTable->insert(3);
