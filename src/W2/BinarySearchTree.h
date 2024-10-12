@@ -4,25 +4,23 @@
 #include "TreeNode.h"
 
 // NOTE: This is a no-duplicates implementation
-template<typename T> class BinarySearchTree {
+template <typename T> class BinarySearchTree {
 public:
-  BinaryNode<T>* root;
-  BinarySearchTree<T> () : root(nullptr) {};
-  ~BinarySearchTree<T> () {
-    delete root;
-  };
-  void insert(T val);
-  bool lookup(T val);
-  T findMin();
-  BinaryNode<T>* findMinNode(BinaryNode<T>* node);
-  T findMax();
-  BinaryNode<T>* findMaxNode(BinaryNode<T>* node);
-  void remove(T val);
-  void removeNode(BinaryNode<T>* node);
+    BinaryNode<T> *root;
+    BinarySearchTree<T>() : root(nullptr){};
+    ~BinarySearchTree<T>() { delete root; };
+    void insert(T val);
+    bool lookup(T val);
+    T findMin();
+    BinaryNode<T> *findMinNode(BinaryNode<T> *node);
+    T findMax();
+    BinaryNode<T> *findMaxNode(BinaryNode<T> *node);
+    void remove(T val);
+    void removeNode(BinaryNode<T> *node);
 
 private:
-  void insert_rec(T val, BinaryNode<T>*& node);
-  BinaryNode<T>* locate(T val);
+    void insert_rec(T val, BinaryNode<T> *&node);
+    BinaryNode<T> *locate(T val);
 };
 
 #include "BinarySearchTree.cpp"

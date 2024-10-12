@@ -1,5 +1,5 @@
-#include <iostream>
 #include "LinkedStack.h"
+#include <iostream>
 
 int main() {
     LinkedStack<float> stack = LinkedStack<float>();

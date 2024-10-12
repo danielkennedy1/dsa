@@ -1,5 +1,5 @@
-#include <iostream>
 #include "LinkedQueue.h"
+#include <iostream>
 
 int main() {
     LinkedQueue<float> queue = LinkedQueue<float>();
@@ -9,7 +9,6 @@ int main() {
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
-
 
     queue.enqueue(4.0f);
     queue.enqueue(5.0f);

@@ -5,11 +5,10 @@
 
 template <typename T> class SimpleHashTable {
 public:
-  void insert(T val);
-  bool lookup(T val);
-  T table[HASH_SIZE];
-  SimpleHashTable<T>() {};
-  
+    void insert(T val);
+    bool lookup(T val);
+    T table[HASH_SIZE];
+    SimpleHashTable<T>(){};
 };
 #include "SimpleHashTable.cpp"
 #endif

@@ -1,15 +1,15 @@
-#include <iostream>
 #include "ArrayQueue.h"
+#include <iostream>
 
-template <typename T>
-void printQueue(ArrayQueue<T> queue){
+template <typename T> void printQueue(ArrayQueue<T> queue) {
 
-  std::cout << "array: ";
-  for(int i = 0; i < queue.size; i++) std::cout << queue.array[i];
-  std::cout << " size: " << queue.size;
-  std::cout << " length: " << queue.length;
-  std::cout << " front: " << queue.front;
-  std::cout << std::endl;
+    std::cout << "array: ";
+    for (int i = 0; i < queue.size; i++)
+        std::cout << queue.array[i];
+    std::cout << " size: " << queue.size;
+    std::cout << " length: " << queue.length;
+    std::cout << " front: " << queue.front;
+    std::cout << std::endl;
 }
 
 int main() {
@@ -30,6 +30,5 @@ int main() {
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
 
-    
     return 0;
 }

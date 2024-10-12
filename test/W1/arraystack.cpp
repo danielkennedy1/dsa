@@ -1,5 +1,5 @@
-#include <iostream>
 #include "ArrayStack.h"
+#include <iostream>
 
 int main() {
     ArrayStack<float> stack = ArrayStack<float>();

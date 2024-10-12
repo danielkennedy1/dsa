@@ -5,11 +5,11 @@
 
 template <typename T> class LinkedStack {
 public:
-  T peek(); 
-  void push(T newVal); 
-  T pop(); 
+    T peek();
+    void push(T newVal);
+    T pop();
 
-  ListNode<T> *head = nullptr;
+    ListNode<T> *head = nullptr;
 };
 
 #include "LinkedStack.cpp"
