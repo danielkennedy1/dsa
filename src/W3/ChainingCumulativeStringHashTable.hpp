@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 
-#define HASH_SIZE 101
+#define HASH_SIZE 4951
 
 struct CountNode {
   std::string word;
