@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include "ArrayList.h"
-#include "ChainingHashTable.hpp"
+#include "ChainingAbstractHashTable.hpp"
 #include <cmath>
 
 struct WordCount {
@@ -22,7 +22,7 @@ int main() {
   cat_dog->append("the");
   cat_dog->append("dog");
 
-  ChainingHashTable<WordCount> *table = new ChainingHashTable<WordCount>(
+  ChainingAbstractHashTable<WordCount> *table = new ChainingAbstractHashTable<WordCount>(
     [](WordCount wc) -> int {
       int result = 0;
       for (size_t i = 0; i < wc.word.length(); ++i) {

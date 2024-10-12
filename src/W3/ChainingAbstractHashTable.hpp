@@ -10,10 +10,10 @@ template <typename T> struct ChainNode {
   ChainNode<T>(T element) : element(element) {};
 };
 
-template <typename T> class ChainingHashTable {
+template <typename T> class ChainingAbstractHashTable {
 public:
 
-  ChainingHashTable(int(*hash)(T), bool(*equals)(T, T), std::string(*toString)(T)) : hash(hash), equals(equals), toString(toString) {
+  ChainingAbstractHashTable(int(*hash)(T), bool(*equals)(T, T), std::string(*toString)(T)) : hash(hash), equals(equals), toString(toString) {
     // Produces some interesting errors when you don't zero the memory
     for (int i = 0; i < HASH_SIZE; i++) {
       table[i] = nullptr;
