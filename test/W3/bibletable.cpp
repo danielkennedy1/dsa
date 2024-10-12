@@ -1,18 +1,24 @@
-#include "ChainingCumulativeStringHashTable.hpp"
+#include "ArrayList.h"
+#include "ChainingHashTable.hpp"
 #include <string>
 #include <fstream>
 
 int main() {
-  ChainingCumulativeStringHashTable* table = new ChainingCumulativeStringHashTable();
+  ChainingHashTable<std::string>* table = new ChainingHashTable<std::string>();
 
   std::ifstream file("bible.txt");
 
   std::string word;
   while (file >> word) {
-    table->increment(word, 1);
+    table->insert(word);
   }
 
-  table->print();
+  std::cout << "printout:" << std::endl;
+  ArrayList<std::string *> all = table->all();
+
+  for (int i = 0; i < all.length; i++) {
+    std::cout << *all.get(i) << std::endl;
+  }
 
 
 }
