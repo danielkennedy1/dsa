@@ -15,9 +15,9 @@ public:
 
     ChainingHashTable() {
         // Produces some interesting errors when you don't zero the memory
-        for (int i = 0; i < HASH_SIZE; i++) {
-            table[i] = nullptr;
-        }
+        //for (int i = 0; i < HASH_SIZE; i++) {
+        //    table[i] = nullptr;
+        //}
     };
 
     void insert(T element) {
