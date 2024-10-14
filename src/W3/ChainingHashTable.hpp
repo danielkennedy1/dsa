@@ -30,7 +30,6 @@ public:
                 node = node->next;
             }
             ChainNode<T> *newNode = new ChainNode<T>(element);
-            newNode->element = element;
             node->next = newNode;
         }
     };

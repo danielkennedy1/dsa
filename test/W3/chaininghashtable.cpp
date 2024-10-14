@@ -14,8 +14,7 @@ int hash(const std::string &element) {
 };
 
 int main() {
-    ChainingHashTable<std::string> *table =
-        new ChainingHashTable<std::string>();
+    ChainingHashTable<std::string> *table = new ChainingHashTable<std::string>();
 
     table->insert("ABCD");
     table->insert("ABCE");
