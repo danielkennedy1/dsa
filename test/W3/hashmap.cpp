@@ -3,12 +3,14 @@
 
 
 int main() {
-    std::cout << "Instantiating" << std::endl;
-    HashMap<int, int>* hashMap = new HashMap<int, int>();
+    HashMap<const char*, int>* hashMap = new HashMap<const char*, int>();
 
-    std::cout << "Inserting" << std::endl;
-    hashMap->insert(1, 69);
+    std::string key = "a123";
 
-    std::cout << "Looking" << std::endl;
-    std::cout << hashMap->lookup(1) << std::endl;
+    hashMap->put(key.c_str(), 22340017);
+
+    int v;
+    hashMap->lookup(key.c_str(), v); 
+
+    std::cout << v << std::endl;
 }
