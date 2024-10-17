@@ -43,6 +43,35 @@ public:
         }
     }
 
+
+    void remove(const K &key) {
+        unsigned long hashValue = hash(key);
+        MapNode<K, V> *prev = NULL;
+        MapNode<K, V> *entry = table[hashValue];
+
+        while (entry != NULL && entry->key != key) {
+            prev = entry;
+            entry = entry->next;
+        }
+
+        if (entry == NULL) {
+            return;
+        }
+
+        else {
+            if (prev == NULL) {
+                if (entry->next != NULL) {
+                    table[hashValue] = entry->next;
+                } else {
+                    table[hashValue] = NULL;
+                }
+            } else {
+                prev->next = entry->next;
+            }
+            delete entry;
+        }
+    }
+
     bool lookup(K key, V &output) {
         unsigned int location = hash(key);
         MapNode<K, V> *node = table[location];

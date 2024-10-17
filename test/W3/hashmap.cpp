@@ -1,12 +1,21 @@
 #include <HashMap.hpp>
 #include <iostream>
 
-
 void printTable(HashMap<int, int>* hashMap) {
     for (int i = 0; i < hashMap->size; i++) {
         std::cout << "Index: " << i << " ";
-        if (hashMap->table[i] != nullptr) {
-            std::cout << hashMap->table[i]->key << std::endl;
+        MapNode<int, int>* node = hashMap->table[i];
+        if (node != nullptr) {
+            std::cout << "Key: " << node->key << " Value: " << node->value;
+
+            while (node->next != nullptr) {
+                node = node->next;
+                std::cout << " -> Key: " << node->key << " Value: " << node->value;
+            }
+
+
+            std::cout << std::endl;
+
         } else {
             std::cout << "NULL" << std::endl;
         }
@@ -17,24 +26,27 @@ void printTable(HashMap<int, int>* hashMap) {
 int main() {
     HashMap<int, int>* hashMap = new HashMap<int, int>();
 
-
     hashMap->put(1, 1);
-    printTable(hashMap);
     hashMap->put(2, 2);
-    printTable(hashMap);
     hashMap->put(3, 3);
-    printTable(hashMap);
     hashMap->put(4, 4);
-    printTable(hashMap);
     hashMap->put(5, 5);
-    printTable(hashMap);
 
+    hashMap->remove(3);
+    
     int v;
-    hashMap->lookup(5, v); 
-
     for (int i = 1; i < 6; i++) {
         hashMap->lookup(i, v);
         std::cout << v << std::endl;
+    }
+
+    printTable(hashMap);
+    bool success = hashMap->lookup(3, v);
+
+    if (success) {
+        std::cout << "found: " << v << std::endl;
+    } else {
+        std::cout << "not found" << std::endl;
     }
 
     std::cout << "Size: " << hashMap->size << std::endl;
