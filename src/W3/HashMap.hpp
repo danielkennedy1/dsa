@@ -1,10 +1,13 @@
-#include <iostream>
-
 template <typename K, typename V> struct MapNode {
     K key;
     V value;
     MapNode<K, V> *next;
     MapNode<K, V>(K key, V value) : key(key), value(value), next(nullptr) {};
+    ~MapNode<K, V>() {
+        if (next != nullptr) {
+            delete next;
+        }
+    }
 };
 
 template <typename K, typename V> class HashMap {
@@ -15,12 +18,36 @@ public:
             table[i] = nullptr;
     }
 
-    int size = 4; // size of array
+    int size = 4;
     MapNode<K, V> **table;
-    int count = 0; // number of elements
+    int count = 0;
     double loadFactorTolerance = 0.5f;
 
+    void rehash(int newSize) {
+        MapNode<K, V> **oldTable = table;
+        int oldSize = size;
+        size = newSize;
+        table = new MapNode<K, V> *[size];
+        for (int i = 0; i < size; i++)
+            table[i] = nullptr;
+        count = 0;
+
+        for (int i = 0; i < oldSize; i++) {
+            MapNode<K, V> *node = oldTable[i];
+            while (node != nullptr) {
+                put(node->key, node->value);
+                MapNode<K, V> *prev = node;
+                node = node->next;
+                delete prev;
+            }
+        }
+        delete[] oldTable;
+    }
+
     void put(K key, V value) {
+        if (count >= size * loadFactorTolerance) {
+            rehash(size * 2);
+        }
         unsigned int hashValue = hash(key);
         MapNode<K, V> *prev = nullptr;
         MapNode<K, V> *node = table[hashValue];
@@ -46,24 +73,24 @@ public:
 
     void remove(const K &key) {
         unsigned long hashValue = hash(key);
-        MapNode<K, V> *prev = NULL;
+        MapNode<K, V> *prev = nullptr;
         MapNode<K, V> *entry = table[hashValue];
 
-        while (entry != NULL && entry->key != key) {
+        while (entry != nullptr && entry->key != key) {
             prev = entry;
             entry = entry->next;
         }
 
-        if (entry == NULL) {
+        if (entry == nullptr) {
             return;
         }
 
         else {
-            if (prev == NULL) {
-                if (entry->next != NULL) {
+            if (prev == nullptr) {
+                if (entry->next != nullptr) {
                     table[hashValue] = entry->next;
                 } else {
-                    table[hashValue] = NULL;
+                    table[hashValue] = nullptr;
                 }
             } else {
                 prev->next = entry->next;

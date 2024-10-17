@@ -34,13 +34,9 @@ int main() {
 
     hashMap->remove(3);
     
-    int v;
-    for (int i = 1; i < 6; i++) {
-        hashMap->lookup(i, v);
-        std::cout << v << std::endl;
-    }
-
     printTable(hashMap);
+
+    int v;
     bool success = hashMap->lookup(3, v);
 
     if (success) {
