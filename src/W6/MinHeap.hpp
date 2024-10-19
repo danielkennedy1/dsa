@@ -9,9 +9,9 @@ struct HeapNode {
 };
 
 template <typename T>
-class Heap {
+class MinHeap {
 public:
-    Heap() { array = new ArrayList<HeapNode<T>*>(); }
+    MinHeap() { array = new ArrayList<HeapNode<T>*>(); }
 
     // TODO: There's a faster way to do it by shifting the replaced value down
     // instead of this percolation

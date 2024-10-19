@@ -1,7 +1,7 @@
-#include "Heap.hpp"
+#include "MinHeap.hpp"
 
 int main() {
-    Heap<int> *heap = new Heap<int>();
+    MinHeap<int> *heap = new MinHeap<int>();
 
     heap->insert(1, 1);
     heap->insert(5, 5);
