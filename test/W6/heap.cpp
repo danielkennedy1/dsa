@@ -1,16 +1,19 @@
 #include "Heap.hpp"
 
 int main() {
-    Heap<int>* heap = new Heap<int>();
+    Heap<int> *heap = new Heap<int>();
 
-    heap->insert(69, 20);
-    heap->insert(420, 10);
-    heap->insert(30000, 2);
-
-
-    for(int i = 0; i < heap->array->length; i++) std::cout << heap->array->get(i)->value << ":" << heap->array->get(i)->priority << ", ";
-
-    std::cout << std::endl;
+    heap->insert(1, 1);
+    heap->insert(5, 5);
+    heap->insert(6, 6);
+    heap->insert(2, 2);
+    heap->insert(4, 4);
+    heap->insert(3, 3);
+    heap->insert(7, 7);
+    
+    while (heap->array->length >= 1) {
+        std::cout << heap->min() << std::endl;
+    }
 
     return 0;
 }

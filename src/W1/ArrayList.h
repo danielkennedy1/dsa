@@ -11,6 +11,8 @@ public:
     void remove(int index);
     void clear();
 
+    T& operator[](int index);
+
     int size = 1;   // size of array
     int length = 0; // number of elements
 

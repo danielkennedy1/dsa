@@ -33,6 +33,8 @@ template <typename T> void ArrayList<T>::insert(T element, int index) {
 
 template <typename T> T& ArrayList<T>::get(int index) { return array[index]; }
 
+template <typename T> T& ArrayList<T>::operator[](int index) { return array[index]; }
+
 template <typename T> void ArrayList<T>::resize(int newSize) {
     T *newArray = new T[newSize](); // () 0s the elements
 

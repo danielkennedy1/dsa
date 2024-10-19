@@ -8,7 +8,7 @@ int main() {
     array->append(3);
     array->append(4);
 
-    array->get(3) = 12;
+    (*array)[3] = 12;
 
     for (int i = 0; i < array->length; i++) std::cout << array->get(i) << ", " << std::endl;
 }
